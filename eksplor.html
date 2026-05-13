@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Wisata Magelang" />
+    <meta
+      property="og:description"
+      content="Jelajahi hidden gem dan wisata alam terbaik di Magelang."
+    />
+    <meta
+      property="og:image"
+      content="https://wisatamagelang.web.id/assets/images/banner.png"
+    />
+    <meta
+      property="og:type"
+      content="website"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/pratamabayu/graff/graff.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/theme.css">
-    <title>Eksplor Wisata</title>
+    <title>Eksplor Wisata Magelang - Gunung, Air Terjun, Camping, Sunrise & Petualangan</title>
+    <meta
+        name="description"
+        content="Eksplor berbagai destinasi wisata di Magelang berdasarkan kategori seperti gunung, bukit, air terjun, camping, petualangan, dan spot sunrise."
+    />
 </head>
 <body class="background-color-light">
     <header class="padding-large padding-medium@s">
@@ -27,22 +44,22 @@
             </div>
         </nav>
     </header>
+    <main>
+        <!-- TAG SECTION -->
+        <section id="tags" class="padding-xlarge padding-large@m padding-small@s padding-remove-vertical padding-remove-vertical@m">
+            <div class="flex flex-justify-content-between flex-wrap@s flex-wrap@m flex-justify-content-center@s flex-justify-content-center@m padding-large padding-remove-horizontal padding-remove-bottom">
+                <span class="tag active border-radius-small cursor-pointer" data-kategori="gunung" ><p class="text-large text-normal@m text-small@s">Gunung & Bukit</p></span>
+                <span class="tag border-radius-small cursor-pointer" data-kategori="air"><p class="text-large text-normal@m text-small@s">Air Terjun</p></span>
+                <span class="tag border-radius-small cursor-pointer" data-kategori="camping"><p class="text-large text-normal@m text-small@s">Camping & Hutan</p></span>
+                <span class="tag border-radius-small cursor-pointer" data-kategori="sunrise"><p class="text-large text-normal@m text-small@s">Sunrise Spot</p></span>
+                <span class="tag border-radius-small cursor-pointer" data-kategori="petualangan"><p class="text-large text-normal@m text-small@s">Petualangan</p></span>
+            </div>
+        </section>
 
-    <!-- TAG SECTION -->
-    <section class="padding-xlarge padding-large@m padding-small@s padding-remove-vertical padding-remove-vertical@m">
-        <div class="flex flex-justify-content-between flex-wrap@s flex-wrap@m flex-justify-content-center@s flex-justify-content-center@m padding-large padding-remove-horizontal padding-remove-bottom">
-            <span class="tag active border-radius-small cursor-pointer" data-kategori="gunung" ><p class="text-large text-normal@m text-small@s">Gunung & Bukit</p></span>
-            <span class="tag border-radius-small cursor-pointer" data-kategori="air"><p class="text-large text-normal@m text-small@s">Air Terjun</p></span>
-            <span class="tag border-radius-small cursor-pointer" data-kategori="camping"><p class="text-large text-normal@m text-small@s">Camping & Hutan</p></span>
-            <span class="tag border-radius-small cursor-pointer" data-kategori="sunrise"><p class="text-large text-normal@m text-small@s">Sunrise Spot</p></span>
-            <span class="tag border-radius-small cursor-pointer" data-kategori="petualangan"><p class="text-large text-normal@m text-small@s">Petualangan</p></span>
-        </div>
-    </section>
-
-    <!-- CARD SECTION -->
-    <section id="card-container" class="padding-xlarge padding-medium@m padding-small@s padding-remove-top flex flex-column gap-medium margin-medium margin-remove-horizontal margin-remove-bottom margin-remove-top">
-    </section>
-    
+        <!-- CARD SECTION -->
+        <section id="card-container" class="padding-xlarge padding-medium@m padding-small@s padding-remove-top flex flex-column gap-medium margin-medium margin-remove-horizontal margin-remove-bottom margin-remove-top">
+        </section>
+    </main>
     <footer class="width-1/1 height-auto@s">
         <div class="background-cover background-repeat height-medium height-auto@m height-100vh@s flex flex-align-items-center flex-justify-content-between flex-justify-content-start@s padding-large padding-medium@m padding-small@s flex-column@s" style="background-image: url(assets/images/footer.png)">
             <div class="width-1/2 width-1/1@s padding-large padding-medium@m padding-small@s padding-remove-vertical">
@@ -83,8 +100,8 @@
 
 <script src="js/dataWisata.js"></script>
 <script>
-window.goToDetail = function(id) {
-    window.location.href = `detail.html?id=${id}`;
+window.goToDetail = function(slug) {
+    window.location.href = `detail/${slug}`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -97,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function render(data){
         container.innerHTML = data.map(item => `
-            <div class="card card-default" onclick="goToDetail(${item.id})" style="cursor:pointer;">
+            <div class="card card-default" onclick="goToDetail(${item.slug})" style="cursor:pointer;">
                 <div class="card-body flex box-shadow-xlarge flex-row flex-column@m flex-column@s gap-medium">
                     <div class="width-1/2 width-1/1@m width-1/1@s">
                         <img class="width-1/1" src="${item.gambar}" alt="${item.judul}">

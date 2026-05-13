@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+
+  "rewrites": [
+    {
+      "source": "/detail/:slug",
+      "destination": "/detail.html"
+    }
+  ]
+}
