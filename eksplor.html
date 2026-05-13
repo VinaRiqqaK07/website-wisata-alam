@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function render(data){
         container.innerHTML = data.map(item => `
-            <div class="card card-default" onclick="goToDetail(${item.slug})" style="cursor:pointer;">
+            <div class="card card-default" onclick="goToDetail('${item.slug}')" style="cursor:pointer;">
                 <div class="card-body flex box-shadow-xlarge flex-row flex-column@m flex-column@s gap-medium">
                     <div class="width-1/2 width-1/1@m width-1/1@s">
                         <img class="width-1/1" src="${item.gambar}" alt="${item.judul}">
