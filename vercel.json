@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/detail/(.*)",
-      "destination": "/detail.html"
+      "destination": "/wisata.html"
     }
   ]
 }
