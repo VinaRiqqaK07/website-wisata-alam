@@ -32,7 +32,7 @@
     <header class="padding-large padding-medium@s">
         <nav class="navbar-solid border-bottom">
             <div class="container flex flex-justify-content-between flex-align-items-center padding-medium padding-small@s">
-                <img src="assets/images/Logo.png" alt="Logo Wisata Magelang" class="navbar-logo">
+                <a href="/"><img src="assets/images/Logo.png" alt="Logo Wisata Magelang" class="navbar-logo"></a>
 
                 <button class="hamburger"> <i class="fa-solid fa-bars"></i> </button>
 
@@ -63,7 +63,7 @@
     <footer class="width-1/1 height-auto@s">
         <div class="background-cover background-repeat height-medium height-auto@m height-100vh@s flex flex-align-items-center flex-justify-content-between flex-justify-content-start@s padding-large padding-medium@m padding-small@s flex-column@s" style="background-image: url(assets/images/footer.png)">
             <div class="width-1/2 width-1/1@s padding-large padding-medium@m padding-small@s padding-remove-vertical">
-                <img class="padding-medium padding-small@s padding-remove-vertical margin-small margin-remove-horizontal" src="assets/images/logo-white.png" alt="Logo putih Wisata Magelang" height="100">
+                <a href="/"><img class="padding-medium padding-small@s padding-remove-vertical margin-small margin-remove-horizontal" src="assets/images/logo-white.png" alt="Logo putih Wisata Magelang" height="100"></a>
                 <h4 class="width-1/2 width-1/1@s color-light">Discover the Natural Soul of Magelang</h4>
                 <p class="color-light text-small margin-remove-bottom@s">Pusat informasi wisata alam Magelang. <br> Temukan destinasi terbaik dan jelajahi pesona alamnya.</p>
                 <p class="margin-medium margin-remove-horizontal color-light text-small"><b>2026 Discover the Soul of Magelang. All rights reserved.</b></p>
@@ -78,12 +78,12 @@
                         
                     </div>
                     <div>
-                        <p class="color-light text-medium margin-remove-bottom"><b>Eksplor Wisata</b></p>
-                        <p class="color-light margin-remove-bottom">Gunung & Bukit</p>
-                        <p class="color-light margin-remove-bottom">Air Terjun</p>
-                        <p class="color-light margin-remove-bottom">Camping & Hutan</p>
-                        <p class="color-light margin-remove-bottom">Sunrise Spot</p>
-                        <p class="color-light margin-remove-bottom">Petualangan</p>
+                        <a href="eksplor.html" class="color-light text-medium margin-remove-bottom"><b>Eksplor Wisata</b></a>
+                        <p class="margin-remove-bottom"><a href="eksplor.html?kategori=gunung" class="color-light">Gunung & Bukit</a></p>
+                        <p class="margin-remove-bottom"><a href="eksplor.html?kategori=air" class="color-light">Air Terjun</a></p>
+                        <p class="margin-remove-bottom"><a  href="eksplor.html?kategori=camping" class="color-light">Camping & Hutan</a></p>
+                        <p class="margin-remove-bottom"><a href="eksplor.html?kategori=sunrise" class="color-light">Sunrise Spot</a></p>
+                        <p class="margin-remove-bottom"><a href="eksplor.html?kategori=petualangan" class="color-light">Petualangan</a></p>
                     </div>
                 </div>
                 <div class="flex flex-row gap-small padding-medium">
@@ -108,6 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // function goToDetail(id) {
     //     window.location.href = `detail.html?id=${id}`;
     // }
+
+    const params = new URLSearchParams(window.location.search);
+    const kategoriFromUrl = params.get("kategori")  || "gunung";
 
     const container = document.getElementById("card-container");
     const tags = document.querySelectorAll(".tag");
@@ -142,27 +145,53 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
     }
 
-    // render awal (default)
-    render(dataWisata.filter(item => item.kategori.includes("gunung")));
+   // set active awal berdasarkan URL
+    tags.forEach(tag => {
+
+        tag.classList.remove("active");
+
+        if(tag.dataset.kategori === kategoriFromUrl){
+            tag.classList.add("active");
+        }
+
+    });
+
+    // render awal
+    render(
+        dataWisata.filter(item =>
+            item.kategori.includes(kategoriFromUrl)
+        )
+    );
 
     // event klik tag
     tags.forEach(tag => {
+
         tag.addEventListener("click", () => {
-
-            // hapus active semua
-            tags.forEach(t => t.classList.remove("active"));
-
-            // set active yang diklik
-            tag.classList.add("active");
 
             const kategori = tag.dataset.kategori;
 
-            // filter data
-            const filtered = dataWisata.filter(item => item.kategori.includes(kategori));
+            // update URL tanpa reload
+            window.history.replaceState(
+                null,
+                "",
+                `?kategori=${kategori}`
+            );
 
-            // render ulang
+            // hapus active semua tag
+            tags.forEach(t => t.classList.remove("active"));
+
+            // aktifkan tag yang diklik
+            tag.classList.add("active");
+
+            // filter & render ulang
+            const filtered = dataWisata.filter(item =>
+                item.kategori.includes(kategori)
+            );
+
             render(filtered);
+
         });
+
     });
 
     // =========================
