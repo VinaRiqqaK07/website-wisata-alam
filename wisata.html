@@ -30,7 +30,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
     <title>Wisata Alam Magelang</title>
     <meta name="description" content="">
   </head>
@@ -38,7 +38,7 @@
     <header class="padding-large padding-medium@s">
       <nav class="navbar-solid border-bottom">
             <div class="container flex flex-justify-content-between flex-align-items-center padding-medium padding-small@s">
-                <img src="assets/images/Logo.png" alt="Logo" class="navbar-logo">
+                <img src="/assets/images/Logo.png" alt="Logo" class="navbar-logo">
 
                 <button class="hamburger"> <i class="fa-solid fa-bars"></i> </button>
 
@@ -162,7 +162,7 @@
     <footer class="width-1/1 height-auto@s">
         <div class="background-cover background-repeat height-medium height-auto@m height-100vh@s flex flex-align-items-center flex-justify-content-between flex-justify-content-start@s padding-large padding-medium@m padding-small@s flex-column@s" style="background-image: url(assets/images/footer.png)">
             <div class="width-1/2 width-1/1@s padding-large padding-medium@m padding-small@s padding-remove-vertical">
-                <img class="padding-medium padding-small@s padding-remove-vertical margin-small margin-remove-horizontal" src="assets/images/logo-white.png" alt="Logo" height="100">
+                <img class="padding-medium padding-small@s padding-remove-vertical margin-small margin-remove-horizontal" src="/assets/images/logo-white.png" alt="Logo" height="100">
                 <h4 class="width-1/2 width-1/1@s color-light">Discover the Natural Soul of Magelang</h4>
                 <p class="color-light text-small margin-remove-bottom@s">Pusat informasi wisata alam Magelang. <br> Temukan destinasi terbaik dan jelajahi pesona alamnya.</p>
                 <p class="margin-medium margin-remove-horizontal color-light text-small"><b>2026 Discover the Soul of Magelang. All rights reserved.</b></p>
@@ -197,7 +197,7 @@
   </body>
 </html>
 
-<script src="js/dataWisata.js"></script>
+<script src="/js/dataWisata.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     // const params = new URLSearchParams(window.location.search);
@@ -253,10 +253,10 @@
       <div
         class="flex flex-row flex-column@s flex-column@m gap-small padding-large padding-medium@m padding-small@s padding-remove-vertical padding-remove-top@s margin-small margin-remove-horizontal margin-remove-top@s margin-remove-top@m"
       >
-        <img src="${item.detail.gambar1}" />
+        <img src="/${item.detail.gambar1}" />
         <div class="flex flex-column flex-justify-content-center gap-medium gap-small@s">
-          <img class="width-1/1" src="${item.detail.gambar2}" />
-          <img class="width-1/1" src="${item.detail.gambar3}" />
+          <img class="width-1/1" src="/${item.detail.gambar2}" />
+          <img class="width-1/1" src="/${item.detail.gambar3}" />
         </div>
       </div>
       <div
